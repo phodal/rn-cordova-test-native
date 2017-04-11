@@ -1,18 +1,6 @@
-import React, {Component} from 'react';
-import {StyleSheet, WebView, Platform} from 'react-native';
-import {AppSizes, AppStyles} from '@theme/';
-import {setCustomSourceTransformer} from 'react-native/Libraries/Image/resolveAssetSource';
-
-setCustomSourceTransformer((resolver) => {
-  if (Platform.OS === 'android'
-    && !resolver.serverUrl
-    && !resolver.bundlePath
-    && resolver.asset.type === 'html') {
-    resolver.bundlePath = '/android_asset/';
-  }
-
-  return resolver.defaultAsset();
-});
+import React, { Component } from 'react';
+import { StyleSheet, WebView } from 'react-native';
+import { AppSizes, AppStyles } from '@theme/';
 
 const HTML = `
   <style>
@@ -1046,7 +1034,7 @@ class Authenticate extends Component {
       scalesPageToFit
       startInLoadingState
       onMessage={this.handleMessage}
-      source={{html: HTML, baseUrl: 'web/'}}
+      source={{ html: HTML, baseUrl: 'web/' }}
       automaticallyAdjustContentInsets={false}
       style={[AppStyles.container, styles.container]}
       onNavigationStateChange={this.onNavigationStateChange}
