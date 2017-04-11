@@ -20,7 +20,7 @@ export default {
   // URLs
   urls: {
     resetPassword: 'http://wp-api.mcnam.ee/wp-login.php?action=lostpassword',
-    signUp: 'https://phodal.github.io/motree',
+    signUp: 'https://phodal.github.io/rn-cordova-test/',
   },
 
   // Navbar Props

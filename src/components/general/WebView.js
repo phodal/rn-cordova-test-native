@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
 
 /* Component ==================================================================== */
 class AppWebView extends Component {
+  webview = null;
   static componentName = 'AppWebView';
 
   static propTypes = {
@@ -62,6 +63,11 @@ class AppWebView extends Component {
   onNavigationStateChange = (navState) => {
     this.state.webViewURL = navState.url;
     if (this.props.onNavigationStateChange) this.props.onNavigationStateChange(navState.url);
+  };
+
+  handleMessage = (evt: any) => {
+    const message = evt.nativeEvent.data;
+    this.webview.postMessage(message);
   }
 
   render = () => {
@@ -72,8 +78,10 @@ class AppWebView extends Component {
 
     return (
       <WebView
+        ref={(webview) => { this.webview = webview; }}
         scalesPageToFit
         startInLoadingState
+        onMessage={this.handleMessage}
         source={{ uri: webViewURL }}
         automaticallyAdjustContentInsets={false}
         style={[AppStyles.container, styles.container]}
