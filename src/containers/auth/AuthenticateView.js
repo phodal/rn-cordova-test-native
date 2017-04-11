@@ -32,9 +32,9 @@ class Authenticate extends Component {
   render = () => {
     let source;
     if (__DEV__) {
-      source = require('./tree.html');
+      source = require('../../www/index.html');
     } else {
-      source = Platform.OS === 'ios' ? require('./tree.html') : { uri: 'file:///android_asset/tree.html' };
+      source = Platform.OS === 'ios' ? require('../../www/index.html') : { uri: 'file:///android_asset/www/index.html' };
     }
 
     return (

@@ -1,0 +1,3 @@
+[submodule "src/www"]
+	path = src/www
+	url = git@github.com:phodal/rn-cordova-test-web.git
