@@ -78,6 +78,7 @@ class AppWebView extends Component {
         automaticallyAdjustContentInsets={false}
         style={[AppStyles.container, styles.container]}
         onNavigationStateChange={this.onNavigationStateChange}
+        cacheEnabled={true}
       />
     );
   }

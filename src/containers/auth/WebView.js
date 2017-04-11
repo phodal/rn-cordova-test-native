@@ -33,14 +33,14 @@ class AuthWebView extends Component {
     * + for when the action is completed
     * + restricting people from freely browsing
     */
-  urlChanged = (newUrl) => {
-    if (newUrl !== this.props.url) {
-      timeout = setTimeout(() => {
-        clearTimeout(timeout);
-        Actions.pop();
-      }, 2000);
-    }
-  }
+  urlChanged = () => {
+    // if (newUrl !== this.props.url) {
+    //   timeout = setTimeout(() => {
+    //     clearTimeout(timeout);
+    //     Actions.pop();
+    //   }, 8000);
+    // }
+  };
 
   render = () => (
     <WebView
