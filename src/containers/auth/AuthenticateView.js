@@ -109,6 +109,13 @@ div.scroll {
   <svg  version="1.1" id="logo"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width="1200" height="620"  viewBox="0 0 1200 620" style="enable-background:new 0 0 1200 620;" xml:space="preserve">
     <g>
+    <script><![CDATA[
+      window.postMessage({data: 'test' });
+      function openSkill(evt) {
+         window.postMessage({data: evt });
+      }
+      ]]>
+    </script>
       <g class="output">
         <g class="clusters"></g>
         <g class="edgePaths">
@@ -1022,6 +1029,7 @@ class Authenticate extends Component {
   handleMessage = (evt: any) => {
     const message = evt.nativeEvent.data;
     this.webview.postMessage(message);
+    console.log(message);
     this.message = message;
     this.popupDialog.show();
   };
