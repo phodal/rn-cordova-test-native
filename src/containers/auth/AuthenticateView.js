@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 import React, { Component } from 'react';
-import { StyleSheet, WebView } from 'react-native';
+import { StyleSheet, WebView, Platform } from 'react-native';
 import { AppSizes, AppStyles } from '@theme/';
 
 const styles = StyleSheet.create({
@@ -28,21 +29,29 @@ class Authenticate extends Component {
     this.popupDialog.show();
   };
 
-  render = () => (
-    <WebView
-      ref={(webview) => {
-        this.webview = webview;
-      }}
-      scalesPageToFit
-      startInLoadingState
-      onMessage={this.handleMessage}
-      source={{ source: require('tree.html') }}
-      automaticallyAdjustContentInsets={false}
-      style={[AppStyles.container, styles.container]}
-      onNavigationStateChange={this.onNavigationStateChange}
-      cacheEnabled
-    />
-  )
+  render = () => {
+    let source;
+    if (__DEV__) {
+      source = require('./tree.html');
+    } else {
+      source = Platform.OS === 'ios' ? require('./tree.html') : { uri: 'file:///android_asset/tree.html' };
+    }
+
+    return (
+      <WebView
+        ref={(webview) => {
+          this.webview = webview;
+        }}
+        scalesPageToFit
+        startInLoadingState
+        onMessage={this.handleMessage}
+        source={{source: source}}
+        automaticallyAdjustContentInsets={false}
+        style={[AppStyles.container, styles.container]}
+        onNavigationStateChange={this.onNavigationStateChange}
+      />
+    );
+  }
 }
 
 /* Export Component ==================================================================== */
