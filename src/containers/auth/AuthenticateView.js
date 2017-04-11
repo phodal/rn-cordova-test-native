@@ -45,7 +45,7 @@ class Authenticate extends Component {
         scalesPageToFit
         startInLoadingState
         onMessage={this.handleMessage}
-        source={{source: source}}
+        source={source}
         automaticallyAdjustContentInsets={false}
         style={[AppStyles.container, styles.container]}
         onNavigationStateChange={this.onNavigationStateChange}
