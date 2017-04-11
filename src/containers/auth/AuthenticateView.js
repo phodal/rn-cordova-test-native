@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { StyleSheet, WebView, Platform } from 'react-native';
-import { AppSizes, AppStyles } from '@theme/';
-import { setCustomSourceTransformer } from 'react-native/Libraries/Image/resolveAssetSource';
+import React, {Component} from 'react';
+import {StyleSheet, WebView, Platform} from 'react-native';
+import {AppSizes, AppStyles} from '@theme/';
+import {setCustomSourceTransformer} from 'react-native/Libraries/Image/resolveAssetSource';
 
 setCustomSourceTransformer((resolver) => {
   if (Platform.OS === 'android'
@@ -15,6 +15,109 @@ setCustomSourceTransformer((resolver) => {
 });
 
 const HTML = `
+  <style>
+  
+svg#logo {
+  width: 1200px;
+  overflow: visible;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.node rect {
+  stroke: #333;
+  fill: #fff;
+}
+
+g.node rect {
+  stroke: #bdc3c7;
+  stroke-width: 2px;
+  cursor: pointer;
+}
+
+g.node rect.inner {
+  fill: white;
+}
+
+g.node rect.outer {
+  position: absolute;
+  display: none;
+  stroke-dasharray: 4px;
+  stroke-opacity: 0.5;
+  fill: transparent;
+}
+
+g.selected rect.outer {
+  display: inline;
+}
+
+rect.selection {
+  stroke: gray;
+  stroke-dasharray: 4px;
+  stroke-opacity: 0.5;
+  fill: transparent;
+}
+
+.edgePath path {
+  stroke: gray;
+  fill: gray;
+  stroke-width: 2px;
+}
+
+.node text {
+  pointer-events: none;
+}
+
+/* disable text selection */
+svg *::selection {
+  background: transparent;
+}
+
+svg *::-moz-selection {
+  background: transparent;
+}
+
+svg *::-webkit-selection {
+  background: transparent;
+}
+
+g.has-point.node rect {
+  fill: #ffdc00 !important;
+  stroke: #387ef5;
+}
+
+.splash-img svg {
+  /* Set rules to fill background */
+  min-height: 100%;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.splash-img,
+#obturateur1 {
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  color: #3D489E;
+}
+
+svg#splash * {
+  fill: none;
+  stroke: currentColor;
+}
+
+svg,
+div.scroll {
+  height: 100%;
+  width: auto;
+}
+  </style>
   <svg  version="1.1" id="logo"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width="1200" height="620"  viewBox="0 0 1200 620" style="enable-background:new 0 0 1200 620;" xml:space="preserve">
     <g>
@@ -943,7 +1046,7 @@ class Authenticate extends Component {
       scalesPageToFit
       startInLoadingState
       onMessage={this.handleMessage}
-      source={{ html: HTML, baseUrl: 'web/' }}
+      source={{html: HTML, baseUrl: 'web/'}}
       automaticallyAdjustContentInsets={false}
       style={[AppStyles.container, styles.container]}
       onNavigationStateChange={this.onNavigationStateChange}
