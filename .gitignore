@@ -56,3 +56,4 @@ fastlane/screenshots
 #
 coverage/*
 jest/*
+android/app/src/main/assets/www
