@@ -23,25 +23,6 @@ class SkillTree extends Component {
   constructor() {
     super();
     this.webview = null;
-    this.injectJavaScript = this.injectJavaScript.bind(this);
-  }
-
-  injectJavaScript = () => {
-    const script = `
-    window.cordova = {
-      getAppVersion: {
-        getVersionNumber: function(){
-          var message = {
-            action: 'getVersionNumber'
-          }
-          window.postMessage(JSON.stringify(message))
-        }
-      }
-    }`;
-    // const script = "document.body.style.background = 'red';";
-    if (this.webview) {
-      this.webview.injectJavaScript('');
-    }
   }
 
   handleMessage = (evt: any) => {
@@ -68,9 +49,9 @@ class SkillTree extends Component {
         startInLoadingState
         onMessage={this.handleMessage}
         source={source}
-        onLoad={this.injectJavaScript}
         automaticallyAdjustContentInsets={false}
         style={[AppStyles.container, styles.container]}
+        injectedJavaScript="document.body.style.background = 'red';window.cordova = {getAppVersion: {getVersionNumber: function(){var message = {action: 'getVersionNumber'}window.postMessage(JSON.stringify(message))}}}"
         onNavigationStateChange={this.onNavigationStateChange}
       />
     );
