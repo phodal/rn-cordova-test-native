@@ -20,7 +20,13 @@ const styles = StyleSheet.create({
 class SkillTree extends Component {
   static componentName = 'SkillTree';
 
-  componentDidMount = () => {
+  constructor() {
+    super();
+    this.webview = null;
+    this.injectJavaScript = this.injectJavaScript.bind(this);
+  }
+
+  injectJavaScript = () => {
     const script = `
     window.cordova = {
       getAppVersion: {
@@ -32,13 +38,11 @@ class SkillTree extends Component {
         }
       }
     }`;
+    // const script = "document.body.style.background = 'red';";
     if (this.webview) {
-      console.log(this.webview);
-      this.webview.injectJavaScript(script);
+      this.webview.injectJavaScript('');
     }
-  };
-
-  webview = null;
+  }
 
   handleMessage = (evt: any) => {
     const message = evt.nativeEvent.data;
@@ -64,6 +68,7 @@ class SkillTree extends Component {
         startInLoadingState
         onMessage={this.handleMessage}
         source={source}
+        onLoad={this.injectJavaScript}
         automaticallyAdjustContentInsets={false}
         style={[AppStyles.container, styles.container]}
         onNavigationStateChange={this.onNavigationStateChange}
