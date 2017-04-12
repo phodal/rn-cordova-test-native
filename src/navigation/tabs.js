@@ -19,8 +19,7 @@ import { NavbarMenuButton } from '@containers/ui/NavbarMenuButton/NavbarMenuButt
 import Placeholder from '@components/general/Placeholder';
 import Error from '@components/general/Error';
 import StyleGuide from '@containers/StyleGuideView';
-import Recipes from '@containers/recipes/Browse/BrowseContainer';
-import RecipeView from '@containers/recipes/RecipeView';
+import SkillTree from '@containers/SkillTree';
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -35,26 +34,13 @@ const navbarPropsTabs = {
 const scenes = (
   <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={0.95}>
     <Scene
+      key={'skillTree'}
       {...navbarPropsTabs}
-      key={'recipes'}
-      title={'Recipes'}
-      icon={props => TabIcon({ ...props, icon: 'search' })}
-    >
-      <Scene
-        {...navbarPropsTabs}
-        key={'recipesListing'}
-        component={Recipes}
-        title={AppConfig.appName}
-        analyticsDesc={'Recipes: Browse Recipes'}
-      />
-      <Scene
-        {...AppConfig.navbarProps}
-        key={'recipeView'}
-        component={RecipeView}
-        getTitle={props => ((props.title) ? props.title : 'View Recipe')}
-        analyticsDesc={'RecipeView: View Recipe'}
-      />
-    </Scene>
+      title={'技能树'}
+      component={SkillTree}
+      icon={props => TabIcon({ ...props, icon: 'timeline' })}
+      analyticsDesc={'SkillTree: find your self'}
+    />
 
     <Scene
       key={'timeline'}
