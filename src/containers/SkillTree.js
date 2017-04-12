@@ -20,9 +20,29 @@ const styles = StyleSheet.create({
 class SkillTree extends Component {
   static componentName = 'SkillTree';
 
+  componentDidMount = () => {
+    const script = `
+    window.cordova = {
+      getAppVersion: {
+        getVersionNumber: function(){
+          var message = {
+            action: 'getVersionNumber'
+          }
+          window.postMessage(JSON.stringify(message))
+        }
+      }
+    }`;
+    if (this.webview) {
+      console.log(this.webview);
+      this.webview.injectJavaScript(script);
+    }
+  };
+
+  webview = null;
+
   handleMessage = (evt: any) => {
     const message = evt.nativeEvent.data;
-    this.webview.postMessage(message);
+    // this.webview.postMessage(message);
     console.log(message);
     this.message = message;
   };
