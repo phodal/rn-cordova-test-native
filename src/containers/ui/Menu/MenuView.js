@@ -1,25 +1,13 @@
-/**
- * Menu Contents
- *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
- */
 import React, { Component, PropTypes } from 'react';
 import {
   View,
-  Alert,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-
-// Consts and Libs
 import { AppStyles, AppSizes, AppColors } from '@theme/';
-
-// Components
 import { Spacer, Text, Button } from '@ui/';
 
-/* Styles ==================================================================== */
 const MENU_BG_COLOR = '#2E3234';
 
 const styles = StyleSheet.create({
@@ -80,7 +68,6 @@ const styles = StyleSheet.create({
 /* Component ==================================================================== */
 class Menu extends Component {
   static propTypes = {
-    logout: PropTypes.func.isRequired,
     closeSideMenu: PropTypes.func.isRequired,
     user: PropTypes.shape({
       name: PropTypes.string,
@@ -106,23 +93,6 @@ class Menu extends Component {
         },
       ],
     };
-  }
-
-  login = () => {
-    this.props.closeSideMenu();
-    Actions.login();
-  }
-
-  logout = () => {
-    if (this.props.logout) {
-      this.props.logout()
-        .then(() => {
-          this.props.closeSideMenu();
-          Actions.login();
-        }).catch(() => {
-          Alert.alert('Oh uh!', 'Something went wrong.');
-        });
-    }
   }
 
   render = () => {
