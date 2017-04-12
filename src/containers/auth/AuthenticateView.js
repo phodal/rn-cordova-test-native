@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, { Component } from 'react';
 import { StyleSheet, WebView, Platform } from 'react-native';
 import { AppSizes, AppStyles } from '@theme/';
@@ -26,7 +25,6 @@ class Authenticate extends Component {
     this.webview.postMessage(message);
     console.log(message);
     this.message = message;
-    this.popupDialog.show();
   };
 
   render = () => {
