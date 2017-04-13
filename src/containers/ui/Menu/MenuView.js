@@ -125,37 +125,9 @@ class Menu extends Component {
           <View style={[styles.menu]}>{menuItems}</View>
 
           <View style={[styles.menuBottom]}>
-            {this.props.user && this.props.user.name ?
-              <View>
-                <Text
-                  style={[
-                    styles.menuBottom_text,
-                    AppStyles.textCenterAligned,
-                  ]}
-                >
-                  Logged in as:{'\n'}
-                  {this.props.user.name}
-                </Text>
-
-                <Spacer size={10} />
-
-                <View style={[AppStyles.paddingHorizontal, AppStyles.paddingVerticalSml]}>
-                  <Button
-                    small
-                    title={'Log Out'}
-                    onPress={this.logout}
-                  />
-                </View>
-              </View>
-            :
-              <View style={[AppStyles.paddingHorizontal, AppStyles.paddingVerticalSml]}>
-                <Button
-                  small
-                  title={'Log In'}
-                  onPress={this.login}
-                />
-              </View>
-            }
+            <Text style={[styles.menuBottom_text, AppStyles.textCenterAligned]}>
+              A Phodal idea
+            </Text>
           </View>
         </View>
       </View>
