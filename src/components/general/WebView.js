@@ -45,16 +45,10 @@ class AppWebView extends Component {
     });
   }
 
-  /**
-    * Each time page loads, update the URL
-    */
   onNavigationStateChange = (navState) => {
     this.state.webViewURL = navState.url;
     if (this.props.onNavigationStateChange) this.props.onNavigationStateChange(navState.url);
   };
-  webview = null;
-  popupDialog = null;
-  message = 1;
 
   render = () => {
     const { webViewURL, loading } = this.state;
