@@ -18,7 +18,7 @@ const navbarPropsTabs = {
 
 /* Routes ==================================================================== */
 const scenes = (
-  <Scene key={'tabBar'} tabs tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={0.95}>
+  <Scene key={'tabBar'} tabs={false} tabBarIconContainerStyle={AppStyles.tabbar} pressOpacity={0.95}>
     <Scene
       key={'skillTree'}
       {...navbarPropsTabs}
