@@ -84,11 +84,11 @@ class Menu extends Component {
     this.state = {
       menu: [
         {
-          title: 'Recipes',
+          title: 'Growth 技能树',
           onPress: () => { this.props.closeSideMenu(); Actions.app(); },
         },
         {
-          title: 'Example Link',
+          title: 'About',
           onPress: () => { this.props.closeSideMenu(); Actions.comingSoon(); },
         },
       ],
