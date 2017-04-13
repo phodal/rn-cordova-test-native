@@ -21,7 +21,7 @@ export default Actions.create(
       {/* Drawer Side Menu */}
       <Scene key={'home'} component={Drawer} initial={'tabBar'}>
         {/* Tabbar */}
-        // TODO: clean old tabs code
+        {/* TODO: clean old tabs code */}
         {TabsScenes}
       </Scene>
 
